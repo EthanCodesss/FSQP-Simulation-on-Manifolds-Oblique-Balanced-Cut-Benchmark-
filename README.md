@@ -168,10 +168,10 @@ If you use this repository in your research, please cite:
 
 ```bibtex
 @article{your_FRSQP_paper,
-  title   = {Filter-based SQP on Manifolds with Feasibility Restoration},
-  author  = {Author, A. and Author, B.},
-  journal = {TBD},
-  year    = {20XX}
+  title   = {Optimization on Riemannian Manifolds: A Filter SQP Framework with Applications to IoT-related Multi-Robot Systems and Network Partitioning},
+  author  = {Mingyu Shen and Zhongchao Liang},
+  journal = {Submitting to IEEE IoT},
+  year    = {2025}
 }
 ```
 
