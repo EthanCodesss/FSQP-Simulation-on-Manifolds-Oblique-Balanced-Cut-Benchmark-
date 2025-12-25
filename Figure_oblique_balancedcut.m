@@ -6,7 +6,7 @@ function Figure_oblique_balancedcut(L)
     % Create figures directory if it doesn't exist
     if ~exist('oblique_figures', 'dir')
         mkdir('oblique_figures');
-        endyi
+    end  
     
     % Problem Setup
     N = 50;       % Number of nodes
@@ -199,7 +199,7 @@ function result = run_oblique_with_fsqp(L, N, rankY, x0)
     options.debug_FR_iter  = 3;
     
     % Solve with FSQP_simulation (Assumed to be the main solver function)
-    [xsol, costfinal, residual, info, options_used] = FSQP_simulation(problem, x0, options);
+    [xsol, costfinal, residual, info, options_used] = FRSQP_simulation(problem, x0, options);
     
     result = struct();
     result.x = xsol;

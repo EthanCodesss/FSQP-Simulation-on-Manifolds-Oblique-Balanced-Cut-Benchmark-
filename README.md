@@ -1,6 +1,6 @@
-# FSQP Simulation on Manifolds (Oblique Balanced Cut Benchmark)
+# FRSQP Simulation on Manifolds (Oblique Balanced Cut Benchmark)
 
-A MATLAB research codebase for **filter-based SQP (FSQP)** on manifolds, with a reproducible benchmark on the **Oblique Balanced Cut** problem and comparisons against SQP / `fmincon` (SQP) / Augmented Lagrangian (ALM).
+A MATLAB research codebase for **filter-based Riemannian SQP (FRSQP)** on manifolds, with a reproducible benchmark on the **Oblique Balanced Cut** problem and comparisons against SQP / `fmincon` (SQP) / Augmented Lagrangian (ALM).
 
 > If you use this code in academic work, please cite the associated paper/preprint (see **Citation** section).
 
@@ -10,8 +10,8 @@ A MATLAB research codebase for **filter-based SQP (FSQP)** on manifolds, with a 
 
 This repository contains:
 
-- **`FSQP_simulation.m`**  
-  A manifold-aware **Filter-based Sequential Quadratic Programming (FSQP)** solver featuring:
+- **`FRSQP_simulation.m`**  
+  A manifold-aware **Filter-based Sequential Quadratic Programming (FRSQP)** solver featuring:
   - Filter globalization (objective–feasibility trade-off)
   - Backtracking line search (`tau`)
   - **Feasibility Restoration QP (FR-QP)** when the main QP fails
@@ -21,12 +21,12 @@ This repository contains:
 - **`Figure_oblique_balancedcut.m`**  
   An end-to-end experiment script that:
   - Solves the **Oblique Balanced Cut** benchmark using  
-    **FSQP**, **SQP**, **fmincon(SQP)**, **ALM**
+    **FRSQP**, **SQP**, **fmincon(SQP)**, **ALM**
   - Generates **IEEE-style figures** and exports results to `./oblique_figures/`
   - Prints a simple complexity/time table
 
 
-- **generate_random_laplacian2.m`**  
+- **`generate_random_laplacian2.m`**  
   Prepare a Laplacian matrix `L`
 ---
 
@@ -58,7 +58,7 @@ where `L` is a (graph) Laplacian matrix, `N` is the number of nodes, and `r` (e.
 ### MATLAB Toolboxes
 - **MATLAB**
 - **Optimization Toolbox** (required):
-  - `quadprog` is used inside `FSQP_simulation.m`
+  - `quadprog` is used inside `FRSQP_simulation.m`
   - `fmincon` is used as a baseline in `Figure_oblique_balancedcut.m`
 
 ### Manifold Support
@@ -73,7 +73,7 @@ This code uses **Manopt** style manifolds (e.g., `obliquefactory`) and manifold 
 
 These functions must be available in your MATLAB path (either provided in this repository or from your own/manopt-based implementations).
 
-`FSQP_simulation.m` also calls helper utilities typically found in Manopt-style codebases:
+`FRSQP_simulation.m` also calls helper utilities typically found in Manopt-style codebases:
 - `constraintsdetail`, `mergeOptions`, `getGlobalDefaults`, `applyStatsfun`,  
   `tangentorthobasis`, `hessianmatrix`, `hessianextreme`, etc.
 
@@ -114,8 +114,8 @@ After completion, outputs will be written to:
 
 - `./oblique_figures/`
   - `fig*_*.png`, `fig*_*.eps`, and `.fig` files
-  - `FSQP_solution_matrix.csv`
-  - `FSQP_full_result.mat`
+  - `FRSQP_solution_matrix.csv`
+  - `FRSQP_full_result.mat`
 
 ---
 
@@ -123,21 +123,21 @@ After completion, outputs will be written to:
 
 Running `Figure_oblique_balancedcut(L)` will:
 
-1. Solve the benchmark with **FSQP / SQP / fmincon / ALM**
+1. Solve the benchmark with **FRSQP / SQP / fmincon / ALM**
 2. Save figures:
    - Objective convergence (with inset zoom)
    - KKT residual convergence (log scale)
    - Solution heatmaps comparison
    - Constraint violation bars (log scale)
-3. Export FSQP results:
-   - `oblique_figures/FSQP_solution_matrix.csv`
-   - `oblique_figures/FSQP_full_result.mat`
+3. Export FRSQP results:
+   - `oblique_figures/FRSQP_solution_matrix.csv`
+   - `oblique_figures/FRSQP_full_result.mat`
 
 ---
 
-## Key Options (FSQP)
+## Key Options (FRSQP)
 
-`FSQP_simulation(problem, x0, options)` supports common knobs:
+`FRSQP_simulation(problem, x0, options)` supports common knobs:
 
 - Stopping:
   - `options.maxiter`
@@ -167,7 +167,7 @@ Running `Figure_oblique_balancedcut(L)` will:
 If you use this repository in your research, please cite:
 
 ```bibtex
-@article{your_fsqp_paper,
+@article{your_FRSQP_paper,
   title   = {Filter-based SQP on Manifolds with Feasibility Restoration},
   author  = {Author, A. and Author, B.},
   journal = {TBD},
